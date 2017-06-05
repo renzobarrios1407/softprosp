@@ -61,7 +61,9 @@ def HipotesisCreate(request):
 def HipotesisList(request):
     escenario_base = EscenarioBase.objects.all().order_by('id')
     contexto = {'EscenarioBase':escenario_base}
-    return render(request, 'smic/02 hipotesis.html', contexto)
+    return render(request, 'smic/03_hipotesis_simple.html', contexto)
+
+
 
 class HipotesisPrueba(ListView):
     model = EscenarioBase

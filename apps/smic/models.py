@@ -19,11 +19,11 @@ class Experto(models.Model):
 
 class EscenarioBase(models.Model):
 
-    nombre_corto = models.CharField(max_length=25, blank=False, null=False, default="")
-    nombre_largo = models.CharField(max_length=50, blank=False, null=False, default="")
-    situacion_actual = models.TextField(max_length=100,blank=True,null=True)
-    horizonte = models.TextField(max_length=100,blank=True,null=True)
-    hipotesis_futuro = models.TextField(max_length=100,blank=True,null=True)
+    nombre_corto = models.CharField(max_length=300, blank=False, null=False, default="")
+    nombre_largo = models.CharField(max_length=300, blank=False, null=False, default="")
+    situacion_actual = models.TextField(max_length=300,blank=True,null=True)
+    horizonte = models.TextField(max_length=300,blank=True,null=True)
+    hipotesis_futuro = models.TextField(max_length=300,blank=True,null=True)
 
     def __unicode__(self):
         return '{}'.format(self.id_base)

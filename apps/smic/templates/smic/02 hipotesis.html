@@ -270,8 +270,7 @@
 						<!-- <span class="page-meta">Something Goes Here</span> -->
 					</h2>
 					<!-- Breadcrumb -->
-					
-				<!-- aqui va un msj de "HOME/Dashboard" para navegar directo al principio -->
+          <!-- aqui va un msj de "HOME/Dashboard" para navegar directo al principio -->
 
 					<div class="clearfix"></div>
 				</div><!--/ Page heading ends -->
@@ -325,74 +324,6 @@
 								</div> 
 
 
-								<div class="widget worange">
-									<div class="widget-head">
-										<div class="pull-left">Tabla de Hipotesis Iniciales</div>
-										<div class="widget-icons pull-right">
-											<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
-											<a href="#" class="wclose"><i class="fa fa-times"></i></a>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									<div class="widget-content">
-										<table class="table table-bordered ">
-											<thead>
-												<tr>
-												  <th>Id</th>
-												  <th>nombre largo</th>
-												  <th>nombre corto</th>
-												  <th>situacion actual</th>
-												  <th>horizonte</th>
-												  <th>hipotesis futuro</th>
-                                                  <th>Acciones</th>
-												 
-												</tr>
-											</thead>
-											<tbody>
-
-                                                {% if EscenarioBase %}
-                                                {% for EscenarioBase in EscenarioBase %}
-
-                                                    <tr>
-                                                        <td>{{ EscenarioBase.id }}</td>
-                                                        <td>{{ EscenarioBase.nombre_corto }}</td>
-                                                        <td>{{ EscenarioBase.nombre_largo }}</td>
-                                                        <td>{{ EscenarioBase.situacion_actual }}</td>
-                                                        <td>{{ EscenarioBase.horizonte }}</td>
-                                                        <td>{{ EscenarioBase.hipotesis_futuro }}</td>
-                                                        <td>
-                                                            <a class="btn btn-primary" href="{% url 'smic:escenario_editar' EscenarioBase.id %}"></a>
-                                                        editar</td>
-                                                           <td> <a class="btn btn-danger" href="{% url 'smic:escenario_borrar' EscenarioBase.id %}"></a>
-                                                        eliminar</td>
-                                                    </tr>
-                                                {% endfor %}
-
-                                                {% else %}
-                                                <h1>no hay registros</h1>
-                                                {% endif %}
-
-												     
-											</tbody>
-										</table>
-									</div>
-
-									<div class="widget-foot">
-										
-										<div class="clearfix"></div> 
-									</div>
-								</div>
-
-								<div class="form-group">
-												  <div class="col-md-offset-2 col-md-8">
-													
-													<button type="button" class="btn btn-warning">Guardar</button>
-													<button type="button" class="btn btn-default" style="align:right">Siguiente</button>
-													<button type="button" class="btn btn-info">Info</button>
-
-									   </div>
-								    </div>
-     					        </div>
 
 
 						<!-- Content -->

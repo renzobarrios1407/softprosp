@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'^borrar/(?P<id_EscenarioBase>\d+)/$', EscenarioBase_Delete, name='escenario_borrar'),
 
     url(r'^hip_nuevo$', HipotesisCreate, name='escenario_crear_listar'),
-    url(r'^hip_nuevo$', HipotesisList, name='listar'),
+    url(r'^hip_lista$', HipotesisList, name='escenario_listar'),
+
     url(r'^hip_simple', HipotesisPrueba.as_view(), name='escenario_simple')
 
 
