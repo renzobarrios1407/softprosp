@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- aqui este link sirve para traer_todo lo respecto al css del html-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+       <title>{% block title %} Document {% endblock %}</title>
+</head>
+<body>
+    {% block header %}
+
+    {% endblock %}
+
+    {% block content %}
+    <h5>este es el contenido del archivo base</h5>
+    {% endblock %}
+
+    {% block footer %}
+    <h5>soy el footer del base</h5>
+    {% endblock %}
+
+
+    <scritps src="https://code.jquery.com/jquery-1.10.2.min.js"></scritps>
+    <!--este scripts debajo es para llamar el archivo javascript que necesita el html -->
+    <scritps src="{% static 'js/bootstrap.min.js' %}"></scritps>
+
+</body>
+</html>

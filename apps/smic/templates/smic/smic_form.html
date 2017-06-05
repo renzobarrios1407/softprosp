@@ -1,0 +1,12 @@
+<!--Aqui extendemos para copiar la base de la plantilla original y así evitar poner tanto codigo -->
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Guardar </button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+
+
+{% block content %}
+
+<table>
+    <thead>
+        <tr>
+            <td>id base</td>
+            <td>nombre largo</td>
+            <td>nombre corto</td>
+            <td>situacion actual</td>
+            <td>horizonte</td>
+            <td>hipotesis futuro</td>
+            <td>Acciones</td>
+         </tr>
+    </thead>
+    <tbody>
+
+        {% if EscenarioBase %}
+        {% for EscenarioBase in EscenarioBase %}
+
+            <tr>
+                <td>{{ EscenarioBase.id }}</td>
+                <td>{{ EscenarioBase.nombre_corto }}</td>
+                <td>{{ EscenarioBase.nombre_largo }}</td>
+                <td>{{ EscenarioBase.situacion_actual }}</td>
+                <td>{{ EscenarioBase.horizonte }}</td>
+                <td>{{ EscenarioBase.hipotesis_futuro }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'smic:escenario_editar' EscenarioBase.id %}"></a>
+                editar</td>
+                   <td> <a class="btn btn-danger" href="{% url 'smic:escenario_borrar' EscenarioBase.id %}"></a>
+                eliminar</td>
+            </tr>
+        {% endfor %}
+
+        {% else %}
+        <h1>no hay registros</h1>
+        {% endif %}
+
+    </tbody>
+</table>
+{% endblock %}
