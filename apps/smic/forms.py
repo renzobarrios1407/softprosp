@@ -1,6 +1,6 @@
 from django import forms
 
-from apps.smic.models import EscenarioBase
+from apps.smic.models import EscenarioBase, Experto, EvaluacionBase, EvaluacionCompuesta
 
 class SmicForm(forms.ModelForm):
 
@@ -29,4 +29,23 @@ class SmicForm(forms.ModelForm):
             'situacion_actual': forms.TextInput(attrs={'class':'form-control'}),
             'horizonte': forms.TextInput(attrs={'class':'form-control'}),
             'hipotesis_futuro': forms.TextInput(attrs={'class':'form-control'}),
+        }
+
+class add_evaluacionBase(forms.ModelForm):
+
+    class Meta:
+        model = EvaluacionBase
+
+        fields = [
+            'calificacion_base',
+
+        ]
+
+        labels = {
+            'calificacion_base': 'calificacion',
+        }
+
+        widgets = {
+            'calificacion_base': forms.TextInput(attrs={'class':'form-control'}),
+
         }

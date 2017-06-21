@@ -51,7 +51,7 @@ class EvaluacionCompuesta(models.Model):
         return self.id_Evaluacion_comp
 
 class EvaluacionBase(models.Model):
-    id_evaluacion_base = models.IntegerField(primary_key=True, null=False, blank=False)
+    id_evaluacion_base = models.AutoField(primary_key=True, null=False, blank=False)
     calificacion_base =  models.DecimalField(max_digits='10', decimal_places='3', default='0.0')
     """Llaves Foraneas"""
     id_escenario_base = models.ForeignKey('EscenarioBase', on_delete=models.CASCADE)

@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 
-from apps.smic.views import index, smic_view, escenario_base, EscenarioBase_list, EscenarioBase_edit, EscenarioBase_Delete, HipotesisCreate, HipotesisPrueba, HipotesisList
+from apps.smic.views import index, smic_view, escenario_base, EscenarioBase_list, EscenarioBase_edit, EscenarioBase_Delete, HipotesisCreate, HipotesisPrueba, HipotesisList, HipotesisCalificacionList
 
 
 urlpatterns = [
@@ -13,6 +13,8 @@ urlpatterns = [
 
     url(r'^hip_nuevo$', HipotesisCreate, name='escenario_crear_listar'),
     url(r'^hip_lista$', HipotesisList, name='escenario_listar'),
+    url(r'^hip_cal1$', HipotesisCalificacionList, name='escenario_simple_calificar'),
+
 
     url(r'^hip_simple', HipotesisPrueba.as_view(), name='escenario_simple')
 
