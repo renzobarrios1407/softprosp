@@ -4,6 +4,8 @@
 
 <h2>Analisis de Hipotesis</h2>
 
+                            <form method="POST">
+                                {% csrf_token %}
 								<div class="widget worange">
 									<div class="widget-head">
 										<div class="pull-left">Hipotesis Simples</div>
@@ -17,29 +19,30 @@
 										<table class="table table-bordered ">
 											<thead>
 												<tr>
-												  <th>#</th>
+												  <th>Id</th>
 												  <th>nombre largo</th>
-												  <th>Nombre Corto</th>
-												  <th>Descripcion</th>
-												  <th>Fecha Integracion</th>
-												   <th>probabilidad de ocurrencia (1 se cumple, 0 no se cumple)</th>
-												  <th>calificacion</th>
-												  <th>revisado</th>
-
+												  <th>nombre corto</th>
+												  <th>situacion actual</th>
+												  <th>horizonte</th>
+												  <th>hipotesis futuro</th>
+                                                  <th>probabilidad de ocurrencia (1 tiende a cumplirse, 0 tiende a no cumplirse)</th>
+                                                  <th>Revisado</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-												  <td>1</td>
-												  <td>mejoras para el sector metal mecanico en busqueda de un mejor campo de inversion</td>
-												  <td>mejoras al sector metal mecanico</td>
-												  <td>se desea realizar una investigacion a los recursos utilizados en la industria metalmecanica
-												  	con el proposito de abaratar los insumos utilizados</td>
-												  <td>23/12/2012</td>
-												 <td>
+                                                {% if EscenarioBase %}
+                                                {% for EscenarioBase in EscenarioBase %}
 
+                                                    <tr>
+                                                        <td>{{ EscenarioBase.id }}</td>
+                                                        <td>{{ EscenarioBase.nombre_corto }}</td>
+                                                        <td>{{ EscenarioBase.nombre_largo }}</td>
+                                                        <td>{{ EscenarioBase.situacion_actual }}</td>
+                                                        <td>{{ EscenarioBase.horizonte }}</td>
+                                                        <td>{{ EscenarioBase.hipotesis_futuro }}</td>
+                                                        <td>
 
-												 	<select class="form-control" style="width: 39px;padding-bottom: 3px;padding-top: 3px;padding-left: 4px;padding-right: 4px;">
+                                                            <select name="calificacion"class="form-control" style="width: 50px;padding-bottom: 3px;padding-top: 3px;padding-left: 4px;padding-right: 4px;">
 																<option value="0">0</option>
 																<option value="0.1">0.1</option>
 																<option value="0.2">0.2</option>
@@ -51,67 +54,45 @@
 																<option value="0.8">0.8</option>
 																<option value="0.9">0.9</option>
 																<option value="1">1</option>
+                                                            </select>
 
-													</select>
+                                                        </td>
+                                                        <td>
 
+                                                            {% if EvaluacionBase.calificacion_base == 0.0 %}
+                                                                 <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i> </button>
 
-													<td>0.3</td>
+                                                            {% else %}
+						                                        <button class="btn btn-sm btn-default"><i class="fa fa-check"></i> </button>
 
-												 </td>
-												  <td>
-													  <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i> </button>
-												  </td>
-												</tr>
-												<tr>
-												  <td>2</td>
-												  <td>incremento del capital de la empresa a travez de inversiones en bancos</td>
-												  <td>inversones en bancos</td>
-												  <td>para ganar mas dinero a largo plazo la empresa debera invertir su capital
-												  	en un banco en un CDT y extraer el dinero a los 3 años</td>
-												  <td>20/10/2015</td>
-												   <td>
+                                                            {% endif %}
 
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
 
-												 	<select class="form-control" style="width: 39px;padding-bottom: 3px;padding-top: 3px;padding-left: 4px;padding-right: 4px;">
-																<option value="0">0</option>
-																<option value="0.1">0.1</option>
-																<option value="0.2">0.2</option>
-																<option value="0.3">0.3</option>
-																<option value="0.4">0.4</option>
-																<option value="0.5">0.5</option>
-																<option value="0.6">0.6</option>
-																<option value="0.7">0.7</option>
-																<option value="0.8">0.8</option>
-																<option value="0.9">0.9</option>
-																<option value="1">1</option>
+                                                {% else %}
+                                                <h1>no hay registros</h1>
+                                                {% endif %}
 
-													</select>
-
-													<td>1</td>
-
-
-												 </td>
-												  <td>
-													 <button class="btn btn-sm btn-default"><i class="fa fa-check"></i> </button>
-												  </td>
-
-
-
-											</tbody>
+                                                </tbody>
 										</table>
 									</div>
+
+
+
 
 									<br></br>
 								<div class="form-group">
 												  <div class="col-md-offset-2 col-md-8">
 
-													<button type="button" class="btn btn-warning">Guardar</button>
-													<button type="button" class="btn btn-info">Info</button>
+													<button type="submit" class="btn btn-warning">Guardar</button>
+
 
 												 </div>
 
 								</div>
-
+                             </form>
 
 									<div class="widget-foot">
 

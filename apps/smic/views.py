@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from django.http import HttpResponse
 from apps.smic.forms import SmicForm
-from apps.smic.models import EscenarioBase
+from apps.smic.models import EscenarioBase, EvaluacionBase
 
 # Create your views here.
 
@@ -41,7 +41,7 @@ def EscenarioBase_edit(request, id_EscenarioBase):
     return render(request, 'smic/smic_form.html', {'form':form})
 
 def EscenarioBase_Delete (request, id_EscenarioBase):
-    escenario = EscenarioBase.objects.get(id_base=id_EscenarioBase)
+    escenario = EscenarioBase.objects.get(id=id_EscenarioBase)
     if request.method == 'POST':
         escenario.delete()
         return redirect('smic:escenario_lista')
@@ -61,13 +61,22 @@ def HipotesisCreate(request):
 def HipotesisList(request):
     escenario_base = EscenarioBase.objects.all().order_by('id')
     contexto = {'EscenarioBase':escenario_base}
-    return render(request, 'smic/03_hipotesis_simple.html', contexto)
+    return render(request, 'smic/03_hipotesis_listas.html', contexto)
+
+def HipotesisCalificacionList(request):
+    escenario_base = EscenarioBase.objects.all().order_by('id')
+    contexto = {'EscenarioBase':escenario_base}
+    return render(request, 'smic/04_calificacion_hipotesis.html', contexto)
 
 
+def EvaluacionBase_list(request):
+    evaluacion_base = EvaluacionBase.objects.all().order_by('id')
+    contexto = {'EvaluacionBase':evaluacion_base}
+    return render(request, 'smic/03_hipotesis_listas.html', contexto)
 
 class HipotesisPrueba(ListView):
     model = EscenarioBase
-    template_name = 'smic/03_hipotesis_simple.html'
+    template_name = 'smic/03_hipotesis_listas.html'
     form_class = SmicForm
 
 
