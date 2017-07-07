@@ -42,7 +42,8 @@
                                                         <td>{{ EscenarioBase.hipotesis_futuro }}</td>
                                                         <td>
 
-                                                            <select name="calificacion"class="form-control" style="width: 50px;padding-bottom: 3px;padding-top: 3px;padding-left: 4px;padding-right: 4px;">
+
+                                                        <select name="calificacion"class="form-control" style="width: 50px;padding-bottom: 3px;padding-top: 3px;padding-left: 4px;padding-right: 4px;">
 																<option value="0">0</option>
 																<option value="0.1">0.1</option>
 																<option value="0.2">0.2</option>
@@ -55,11 +56,10 @@
 																<option value="0.9">0.9</option>
 																<option value="1">1</option>
                                                             </select>
-
                                                         </td>
                                                         <td>
 
-                                                            {% if EvaluacionBase.calificacion_base == 0.0 %}
+                                                            {% if EvaluacionBase.calificacion_base == Null %}
                                                                  <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i> </button>
 
                                                             {% else %}
@@ -83,15 +83,14 @@
 
 
 									<br></br>
-								<div class="form-group">
-												  <div class="col-md-offset-2 col-md-8">
+                                        <div class="form-group">
+                                                          <div class="col-md-offset-2 col-md-8">
 
-													<button type="submit" class="btn btn-warning">Guardar</button>
+                                                            <button type="submit" class="btn btn-warning">Guardar</button>
 
 
-												 </div>
-
-								</div>
+                                                          </div>
+                                        </div>
                              </form>
 
 									<div class="widget-foot">
