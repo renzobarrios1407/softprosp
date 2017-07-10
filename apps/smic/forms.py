@@ -1,6 +1,7 @@
 from django import forms
 
 from apps.smic.models import EscenarioBase, Experto, EvaluacionBase, EvaluacionCompuesta
+from apps.smic.choices import valores_Calificacion2, Valores_Calificacion
 
 class SmicForm(forms.ModelForm):
 
@@ -46,6 +47,6 @@ class add_evaluacionBase(forms.ModelForm):
         }
 
         widgets = {
-            'calificacion_base': forms.TextInput(attrs={'class':'form-control'}),
 
+            'calificacion_base': forms.ChoiceField(choices=valores_Calificacion2),
         }

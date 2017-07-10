@@ -1,4 +1,5 @@
 from django.db import models
+from apps.smic.choices import Valores_Calificacion, valores_Calificacion2
 
 # Create your models here.
 
@@ -52,7 +53,7 @@ class EvaluacionCompuesta(models.Model):
 
 class EvaluacionBase(models.Model):
     id_evaluacion_base = models.AutoField(primary_key=True, null=False, blank=False)
-    calificacion_base =  models.DecimalField(max_digits='10', decimal_places='3', default='0.0')
+    calificacion_base =  models.CharField(max_length=11, choices=valores_Calificacion2)
     """Llaves Foraneas"""
     id_escenario_base = models.ForeignKey('EscenarioBase', on_delete=models.CASCADE)
 

@@ -3,7 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
 from django.http import HttpResponse
-from apps.smic.forms import SmicForm
+from apps.smic.forms import SmicForm, add_evaluacionBase
 from apps.smic.models import EscenarioBase, EvaluacionBase
 
 # Create your views here.
@@ -64,10 +64,22 @@ def HipotesisList(request):
     return render(request, 'smic/03_hipotesis_listas.html', contexto)
 
 def HipotesisCalificacionList(request):
+    calificacion = EvaluacionBase.objects
+
     escenario_base = EscenarioBase.objects.all().order_by('id')
     contexto = {'EscenarioBase':escenario_base}
     return render(request, 'smic/04_calificacion_hipotesis.html', contexto)
 
+def HipotesisCalificacionSelect(request):
+    if request.method == 'POST':
+        form = add_evaluacionBase(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('smic:escenario_simple_calificar')
+    else:
+        form = add_evaluacionBase()
+
+    return render(request, 'smic/04_calificacion_hipotesis.html', {'form': form})
 
 def EvaluacionBase_list(request):
     evaluacion_base = EvaluacionBase.objects.all().order_by('id')
