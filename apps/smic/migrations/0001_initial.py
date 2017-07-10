@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
             name='EscenarioBase',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('nombre_corto', models.CharField(default=b'', max_length=25)),
-                ('nombre_largo', models.CharField(default=b'', max_length=50)),
-                ('situacion_actual', models.TextField(max_length=100, null=True, blank=True)),
-                ('horizonte', models.TextField(max_length=100, null=True, blank=True)),
-                ('hipotesis_futuro', models.TextField(max_length=100, null=True, blank=True)),
+                ('nombre_corto', models.CharField(default=b'', max_length=300)),
+                ('nombre_largo', models.CharField(default=b'', max_length=300)),
+                ('situacion_actual', models.TextField(max_length=300, null=True, blank=True)),
+                ('horizonte', models.TextField(max_length=300, null=True, blank=True)),
+                ('hipotesis_futuro', models.TextField(max_length=300, null=True, blank=True)),
             ],
         ),
         migrations.CreateModel(
@@ -42,8 +42,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='EvaluacionBase',
             fields=[
-                ('id_evaluacion_base', models.IntegerField(serialize=False, primary_key=True)),
-                ('calificacion_base', models.DecimalField(default=b'0.0', max_digits=b'10', decimal_places=b'3')),
+                ('id_evaluacion_base', models.AutoField(serialize=False, primary_key=True)),
+                ('calificacion_base', models.TextField(max_length=11, choices=[(b'a', b'a'), (b'b', b'b'), (b'c', b'c'), (b'd', b'd'), (b'e', b'e'), (b'f', b'f'), (b'g', b'g'), (b'h', b'h'), (b'i', b'i'), (b'j', b'j'), (b'k', b'k')])),
                 ('id_escenario_base', models.ForeignKey(to='smic.EscenarioBase')),
             ],
         ),
