@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h2>Analisis de Hipotesis</h2>
+<h6>Calificacion de hipotesis</h6>
 
-                            <form method="POST">
-                                {% csrf_token %}
+
+
 								<div class="widget worange">
 									<div class="widget-head">
-										<div class="pull-left">Hipotesis Simples</div>
+										<div class="pull-left">Calificacion de hipotesis simples</div>
 										<div class="widget-icons pull-right">
 											<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
 											<a href="#" class="wclose"><i class="fa fa-times"></i></a>
@@ -16,6 +16,7 @@
 										<div class="clearfix"></div>
 									</div>
 									<div class="widget-content">
+
 										<table class="table table-bordered ">
 											<thead>
 												<tr>
@@ -79,6 +80,17 @@
 										</table>
 									</div>
 
+                                        <div class="padd">
+                                            <h6>seleccione una hipotesis para calificarla y comentarla (opcional)</h6>
+										    <hr />
+
+
+
+                                                 <form method="POST" class="form-horizontal"  role="form">
+                                                      {% csrf_token %}
+                                                     <label>Escenario
+                                                            {{ form_evaluacion.id_escenario_base }}
+                                                        </label>
 
 
 
@@ -89,7 +101,14 @@
 													<button type="submit" class="btn btn-warning">Guardar</button>
 
 
+
+                                                        <label>Calificación
+                                                            {{ form_evaluacion.calificacion_base }}
+                                                        </label>
+
+
 												 </div>
+
 
 								</div>
                              </form>
@@ -101,58 +120,32 @@
 								</div>
 
 
-								<div class="widget wgreen">
-              						<div class="widget-head">
-									  <div class="pull-left">Comentarios de hipotesis</div>
-									  <div class="widget-icons pull-right">
-										<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
-										<a href="#" class="wclose"><i class="fa fa-times"></i></a>
-									  </div>
-									  <div class="clearfix"></div>
+                                                         <label>Comentarios
+
+
+                                                            {{ form_evaluacion.comentarios }}
+
+                                                         </label>
+
+
+
+                                                         <hr/>
+
+                                                         <div class="form-group">
+                                                                  <div class="col-md-offset-2 col-md-8">
+                                                                    <button type="submit" class="btn btn-warning">Guardar</button>
+                                                                  </div>
+                                                         </div>
+                                                 </form>
+
+
+                                        </div>
 									</div>
-									<div class="widget-content">
-									  <div class="padd">
+                                        <div class="widget-foot">
+    										<div class="clearfix">
+                                            </div>
+									    </div>
+                                </div>
 
-
-										<hr />
-										<!-- Form starts.  -->
-											<form class="form-horizontal" role="form">
-
-
-
-
-
-												<div class="form-group">
-												  <label class="col-md-2 control-label">seleccione la hipotesis</label>
-												  <div class="col-md-8">
-													<select multiple class="form-control">
-													  <option>1</option>
-													  <option>2</option>
-													  <option>3</option>
-													  <option>4</option>
-													  <option>5</option>
-													</select>
-												  </div>
-												</div>
-
-												<div class="form-group">
-												  <label class="col-md-2 control-label">Comentario</label>
-												  <div class="col-md-8">
-													<textarea class="form-control" rows="3" placeholder="Comentario"></textarea>
-												  </div>
-												</div>
-
-												<div class="form-group">
-												  <div class="col-md-offset-2 col-md-8">
-
-													<button type="button" class="btn btn-success">Guardar</button>
-													<button type="button" class="btn btn-info">Info</button>
-
-												  </div>
-												</div>
-											</form>
-									  </div>
-									</div>
-								</div>
 
 {% endblock %}

@@ -20,6 +20,9 @@ class Migration(migrations.Migration):
                 ('horizonte', models.TextField(max_length=100, null=True, blank=True)),
                 ('hipotesis_futuro', models.TextField(max_length=100, null=True, blank=True)),
             ],
+            options={
+                'verbose_name_plural': 'EscenariosBase',
+            },
         ),
         migrations.CreateModel(
             name='EscenarioCompuesto',
@@ -29,6 +32,9 @@ class Migration(migrations.Migration):
                 ('Escenario_base1', models.ForeignKey(related_name='escenariocompuesto_escenario_base1', blank=True, to='smic.EscenarioBase', null=True)),
                 ('Escenario_base2', models.ForeignKey(related_name='escenariocompuesto_escenario_base2', blank=True, to='smic.EscenarioBase', null=True)),
             ],
+            options={
+                'verbose_name_plural': 'Escenarios Compuestos',
+            },
         ),
         migrations.CreateModel(
             name='EscenarioPropuesta',
@@ -38,14 +44,24 @@ class Migration(migrations.Migration):
                 ('consecuencias', models.TextField(max_length=100, null=True, blank=True)),
                 ('escenario_base_propuesto', models.ForeignKey(to='smic.EscenarioBase')),
             ],
+            options={
+                'verbose_name_plural': 'Escenarios Propuestos',
+            },
         ),
         migrations.CreateModel(
             name='EvaluacionBase',
             fields=[
+
                 ('id_evaluacion_base', models.IntegerField(serialize=False, primary_key=True)),
                 ('calificacion_base', models.DecimalField(default=b'0.0', max_digits=b'10', decimal_places=b'3')),
+                ('id_evaluacion_base', models.AutoField(serialize=False, primary_key=True)),
+                ('calificacion_base', models.DecimalField(max_digits=3, decimal_places=2, choices=[(b'0', b'0'), (b'0.1', b'0.1'), (b'0.2', b'0.2'), (b'0.3', b'0.3'), (b'0.4', b'0.4'), (b'0.5', b'0.5'), (b'0.6', b'0.6'), (b'0.7', b'0.7'), (b'0.8', b'0.8'), (b'0.9', b'0.9'), (b'1', b'1')])),
+                ('comentarios', models.TextField(default=b'', max_length=300)),
                 ('id_escenario_base', models.ForeignKey(to='smic.EscenarioBase')),
             ],
+            options={
+                'verbose_name_plural': 'Evaluaciones Base',
+            },
         ),
         migrations.CreateModel(
             name='EvaluacionCompuesta',
@@ -55,6 +71,9 @@ class Migration(migrations.Migration):
                 ('calificacion_negativa', models.DecimalField(default=b'0.0', max_digits=b'10', decimal_places=b'3')),
                 ('id_escenario_comp', models.ForeignKey(to='smic.EscenarioCompuesto')),
             ],
+            options={
+                'verbose_name_plural': 'Evaluaciones Compuestas',
+            },
         ),
         migrations.CreateModel(
             name='Experto',
@@ -77,6 +96,9 @@ class Migration(migrations.Migration):
                 ('probabilidad_escenario', models.DecimalField(default=b'0.0', max_digits=b'10', decimal_places=b'3')),
                 ('id_escenario_base', models.ForeignKey(to='smic.EscenarioBase')),
             ],
+            options={
+                'verbose_name_plural': 'Matrices simple',
+            },
         ),
         migrations.CreateModel(
             name='Portal',
@@ -88,5 +110,8 @@ class Migration(migrations.Migration):
                 ('experto_anonimo', models.ForeignKey(to='smic.Experto')),
                 ('resultado_matriz_simple', models.ForeignKey(to='smic.MatrizSimple')),
             ],
+            options={
+                'verbose_name_plural': 'Portales',
+            },
         ),
     ]

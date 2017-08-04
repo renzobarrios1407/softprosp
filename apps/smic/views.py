@@ -4,6 +4,8 @@ from django.core.urlresolvers import reverse_lazy
 
 from django.http import HttpResponse
 from apps.smic.forms import SmicForm
+
+from apps.smic.forms import SmicForm, EvaluacionBase_Form, EvaluacionCompuesta_Form
 from apps.smic.models import EscenarioBase, EvaluacionBase
 
 # Create your views here.
@@ -19,7 +21,7 @@ def smic_view(request):
         return redirect('smic:index')
     else:
         form = SmicForm()
-    return render(request, 'smic/smic_form.html', {'form' : form})
+    return render(request, 'smic/smic_form.html', {'form': form})
 
 def escenario_base(request):
     return render(request, 'smic/02 hipotesis.html')
@@ -63,10 +65,36 @@ def HipotesisList(request):
     contexto = {'EscenarioBase':escenario_base}
     return render(request, 'smic/03_hipotesis_listas.html', contexto)
 
+
 def HipotesisCalificacionList(request):
     escenario_base = EscenarioBase.objects.all().order_by('id')
     contexto = {'EscenarioBase':escenario_base}
     return render(request, 'smic/04_calificacion_hipotesis.html', contexto)
+
+
+def HipotesisCalificacionSimple(request):
+    if request.method == 'POST':
+        form_evaluacion = EvaluacionBase_Form(request.POST)
+        if form_evaluacion.is_valid():
+            form_evaluacion.save()
+        return redirect('smic:escenario_simple_calificar')
+    else:
+        form_evaluacion = EvaluacionBase_Form()
+
+    contexto = {'form_evaluacion': form_evaluacion}
+    return render(request, 'smic/04_calificacion_hipotesis.html', contexto)
+
+def HipotesisCalificacionCompuesta(request):
+    if request.method == 'POST':
+        form = EvaluacionCompuesta_Form(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('smic:escenario_compuesto_calificar')
+    else:
+        form = EvaluacionCompuesta_Form()
+
+    context = {'evaluacion_compuesta':form}
+    return render(request, 'smic/05_calificacion_compuesta.html', context)
 
 
 def EvaluacionBase_list(request):

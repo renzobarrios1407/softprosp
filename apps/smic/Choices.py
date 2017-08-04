@@ -1,4 +1,4 @@
-Valores_Calificacion =(
+valores_calificacion =(
     ("0", "0"),
     ("0.1", "0.1"),
     ("0.2", "0.2"),
