@@ -8,7 +8,7 @@
 
 								<div class="widget worange">
 									<div class="widget-head">
-										<div class="pull-left">Calificacion de hipotesis simples</div>
+										<div class="pull-left">Calificacion de hipotesis compuestas</div>
 										<div class="widget-icons pull-right">
 											<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
 											<a href="#" class="wclose"><i class="fa fa-times"></i></a>
@@ -16,89 +16,29 @@
 										<div class="clearfix"></div>
 									</div>
 									<div class="widget-content">
-
-										<table class="table table-bordered ">
-											<thead>
-												<tr>
-												  <th>Id</th>
-												  <th>nombre largo</th>
-												  <th>nombre corto</th>
-												  <th>situacion actual</th>
-												  <th>horizonte</th>
-												  <th>hipotesis futuro</th>
-                                                  <th>probabilidad de ocurrencia (1 tiende a cumplirse, 0 tiende a no cumplirse)</th>
-                                                  <th>Revisado</th>
-												</tr>
-											</thead>
-											<tbody>
-                                                {% if EscenarioBase %}
-                                                {% for EscenarioBase in EscenarioBase %}
-
-                                                    <tr>
-                                                        <td>{{ EscenarioBase.id }}</td>
-                                                        <td>{{ EscenarioBase.nombre_corto }}</td>
-                                                        <td>{{ EscenarioBase.nombre_largo }}</td>
-                                                        <td>{{ EscenarioBase.situacion_actual }}</td>
-                                                        <td>{{ EscenarioBase.horizonte }}</td>
-                                                        <td>{{ EscenarioBase.hipotesis_futuro }}</td>
-                                                        <td>
-
-                                                            <select name="calificacion"class="form-control" style="width: 50px;padding-bottom: 3px;padding-top: 3px;padding-left: 4px;padding-right: 4px;">
-																<option value="0">0</option>
-																<option value="0.1">0.1</option>
-																<option value="0.2">0.2</option>
-																<option value="0.3">0.3</option>
-																<option value="0.4">0.4</option>
-																<option value="0.5">0.5</option>
-																<option value="0.6">0.6</option>
-																<option value="0.7">0.7</option>
-																<option value="0.8">0.8</option>
-																<option value="0.9">0.9</option>
-																<option value="1">1</option>
-                                                            </select>
-
-                                                        </td>
-                                                        <td>
-
-                                                            {% if EvaluacionBase.calificacion_base == 0.0 %}
-                                                                 <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i> </button>
-
-                                                            {% else %}
-						                                        <button class="btn btn-sm btn-default"><i class="fa fa-check"></i> </button>
-
-                                                            {% endif %}
-
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-
-                                                {% else %}
-                                                <h1>no hay registros</h1>
-                                                {% endif %}
-
-                                                </tbody>
-										</table>
-									</div>
-
                                         <div class="padd">
-                                            <h6>seleccione una hipotesis para calificarla y comentarla (opcional)</h6>
+                                            <h6>califique las hipotesis compuestas y negativas segun su criterio</h6>
 										    <hr />
 
 
-
-                                                 <form method="POST" class="form-horizontal"  role="form">
+                                               <form method="POST" class="form-horizontal"  role="form">
                                                       {% csrf_token %}
-                                                     <label>Escenario
-                                                            {{ form_evaluacion.id_escenario_base }}
-                                                        </label>
+                                                 {% if form_evaluacion.calificacion_base %}
+                                                     <label> Escenario
+
+                                                        {% if form_evaluacion.id_escenario_base %}
 
 
 
-									<br></br>
-								<div class="form-group">
-												  <div class="col-md-offset-2 col-md-8">
 
-													<button type="submit" class="btn btn-warning">Guardar</button>
+                                                             {{ form_evaluacion.id_escenario_base }}
+
+                                                         {% else %}
+
+
+                                                         {% endif %}
+
+                                                     </label>
 
 
 
@@ -107,21 +47,8 @@
                                                         </label>
 
 
-												 </div>
-
-
-								</div>
-                             </form>
-
-									<div class="widget-foot">
-
-										<div class="clearfix"></div>
-									</div>
-								</div>
-
 
                                                          <label>Comentarios
-
 
                                                             {{ form_evaluacion.comentarios }}
 
@@ -136,6 +63,9 @@
                                                                     <button type="submit" class="btn btn-warning">Guardar</button>
                                                                   </div>
                                                          </div>
+                                                 {% else %}
+                                                <h1>no hay registros</h1>
+                                                 {% endif %}
                                                  </form>
 
 

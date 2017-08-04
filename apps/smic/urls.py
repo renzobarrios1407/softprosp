@@ -17,7 +17,6 @@ urlpatterns = [
 
     url(r'^hip_nuevo$', HipotesisCreate, name='escenario_crear_listar'),
     url(r'^hip_lista$', HipotesisList, name='escenario_listar'),
-    url(r'^hip_cal1$', HipotesisCalificacionList, name='escenario_simple_calificar'),
     url(r'^hip_cal1$', HipotesisCalificacionSimple, name='escenario_simple_calificar'),
     url(r'^hip_cal2$', HipotesisCalificacionCompuesta, name='escenario_compuesto_calificar'),
 
