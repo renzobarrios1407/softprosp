@@ -84,3 +84,28 @@ class EvaluacionCompuesta_Form(forms.ModelForm):
 
 
         }
+
+class EscenarioCompuesto_form(forms.ModelForm):
+    class Meta:
+        model = EscenarioCompuesto
+
+        fields = {
+            'nombre_compuesto',
+            'Escenario_base1',
+            'Escenario_base2',
+
+        }
+
+        labels = {
+            'nombre_compuesto': 'nombre de los 2 escenarios',
+            'Escenario_base1': 'escenario 1',
+            'Escenario_base2': 'Escenario 2',
+        }
+
+        widgets = {
+
+            'nombre_compuesto': forms.Select(choices=valores_calificacion),
+            'Escenario_base1': forms.Select(choices=valores_calificacion),
+            'Escenario_base1': forms.TextInput(),
+
+        }

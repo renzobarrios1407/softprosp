@@ -24,21 +24,25 @@
 
                                                  <form method="POST" class="form-horizontal"  role="form">
                                                       {% csrf_token %}
-                                                     <label>Escenario
-                                                            {{ form_evaluacion.id_escenario_base }}
+                                                     <label>Escenario 1
+                                                            {{ evaluacion_compuesta.id_escenario_comp }}
+                                                        </label>
+
+                                                     <label>Escenario 2
+                                                            {{ evaluacion_compuesta.id_escenario_comp }}
                                                         </label>
 
 
 
-                                                        <label>Calificación
-                                                            {{ form_evaluacion.calificacion_base }}
+                                                        <label>Calificación compuesta
+                                                            {{ evaluacion_compuesta.calificacion_comp }}
                                                         </label>
 
 
 
-                                                         <label>Comentarios
+                                                         <label>Calificación negativa
 
-                                                            {{ form_evaluacion.comentarios }}
+                                                            {{ evaluacion_compuesta.calificacion_negativa }}
 
                                                          </label>
 

@@ -64,7 +64,6 @@ class EvaluacionCompuesta(models.Model):
 
 class EvaluacionBase(models.Model):
     id_evaluacion_base = models.AutoField(primary_key=True, null=False, blank=False)
-    calificacion_base =  models.DecimalField(max_digits='10', decimal_places='3', default='0.0')
     calificacion_base = models.DecimalField(decimal_places=2, max_digits=3)
     comentarios = models.TextField(null=False, blank=False, default="", max_length=300)
 
